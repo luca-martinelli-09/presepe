@@ -1,0 +1,572 @@
+/**
+ * WordPress Content Styles with Tailwind
+ * Supporta tutte le classi di allineamento e layout WordPress
+ */
+
+/* Container principale per il contenuto WordPress */
+.wp-content {
+	@apply prose prose-xl max-w-none px-5 dark:prose-invert;
+
+	/* Typography base */
+	@apply text-foreground;
+
+	/* Links */
+	@apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
+
+	/* Headings */
+	@apply prose-headings:font-display prose-headings:text-foreground;
+	@apply prose-h1:text-8xl;
+
+	/* Images */
+	@apply prose-img:rounded-lg prose-img:shadow-md;
+
+	/* Blockquotes */
+	@apply prose-blockquote:border-l-4 prose-blockquote:border-border prose-blockquote:pl-4 prose-blockquote:italic;
+
+	/* Code blocks */
+	@apply prose-pre:rounded-lg prose-pre:bg-secondary prose-pre:p-4 prose-pre:text-secondary-foreground;
+	@apply prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-muted-foreground;
+}
+
+/* Larghezza di default per i blocchi WordPress (container) */
+.wp-content > * {
+	@apply container mx-auto first:!mt-5;
+}
+
+/* Eccezioni per elementi che non devono avere il container */
+.wp-content > .alignfull,
+.wp-content > .align-full,
+.wp-content > .alignwide,
+.wp-content > .align-wide {
+	@apply max-w-none;
+}
+
+/* Allineamenti WordPress */
+
+/* Allineamento a sinistra */
+.wp-content .alignleft,
+.wp-content .align-left {
+	@apply float-left mr-6 mb-4;
+}
+
+/* Allineamento a destra */
+.wp-content .alignright,
+.wp-content .align-right {
+	@apply float-right mb-4 ml-6;
+}
+
+/* Allineamento centrato */
+.wp-content .aligncenter,
+.wp-content .align-center {
+	@apply clear-both mx-auto my-6 block;
+}
+
+/* Allineamento normale (default) */
+.wp-content .alignnone,
+.wp-content .align-none {
+	@apply my-4 block;
+}
+
+/* Larghezza completa (contenuto) */
+.wp-content .alignwide,
+.wp-content .align-wide {
+	@apply mx-auto my-8 w-full max-w-4xl;
+}
+
+/* Larghezza completa (viewport) */
+.wp-content .alignfull,
+.wp-content .align-full {
+	@apply mx-0 my-8 w-full max-w-full;
+}
+
+/* Classi per blocchi Gutenberg */
+
+/* Gruppo */
+.wp-content .wp-block-group {
+	@apply my-8;
+}
+
+.wp-content .wp-block-group.has-background {
+	@apply rounded-lg p-6;
+}
+
+/* Colonne */
+.wp-content .wp-block-columns {
+	@apply my-8 flex flex-wrap gap-6;
+}
+
+.wp-content .wp-block-column {
+	@apply min-w-0 flex-1;
+}
+
+/* Citazioni */
+.wp-content .wp-block-quote {
+	@apply my-6 border-l-4 border-border py-2 pl-6 italic;
+}
+
+.wp-content .wp-block-quote.is-style-large,
+.wp-content .wp-block-quote.is-large {
+	@apply border-l-0 pl-0 text-center text-xl;
+}
+
+.wp-content .wp-block-quote cite {
+	@apply mt-2 block text-sm text-muted-foreground not-italic;
+}
+
+/* Pullquote */
+.wp-content .wp-block-pullquote {
+	@apply my-8 border-t-4 border-b-4 border-border py-6 text-center;
+}
+
+.wp-content .wp-block-pullquote blockquote {
+	@apply border-0 p-0 text-2xl font-semibold;
+}
+
+/* Immagini */
+.wp-content .wp-block-image {
+	@apply my-6;
+}
+
+.wp-content .wp-block-image img {
+	@apply rounded-lg shadow-md;
+}
+
+.wp-content .wp-block-image figcaption {
+	@apply mt-2 text-center text-sm text-muted-foreground italic;
+}
+
+.wp-content .wp-block-image.is-style-rounded img {
+	@apply rounded-full;
+}
+
+/* Gallery */
+.wp-content .wp-block-gallery {
+	@apply my-8 grid gap-4;
+}
+
+.wp-content .wp-block-gallery.columns-2 {
+	@apply grid-cols-1 md:grid-cols-2;
+}
+
+.wp-content .wp-block-gallery.columns-3 {
+	@apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.wp-content .wp-block-gallery.columns-4 {
+	@apply grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+}
+
+.wp-content .wp-block-gallery .blocks-gallery-item {
+	@apply overflow-hidden rounded-lg;
+}
+
+/* Video */
+.wp-content .wp-block-video {
+	@apply my-6;
+}
+
+.wp-content .wp-block-video video {
+	@apply w-full rounded-lg shadow-md;
+}
+
+/* Embed (YouTube, Vimeo, etc.) */
+.wp-content .wp-block-embed {
+	@apply my-8;
+}
+
+.wp-content .wp-block-embed__wrapper {
+	@apply relative aspect-video;
+}
+
+.wp-content .wp-block-embed__wrapper iframe {
+	@apply absolute inset-0 h-full w-full rounded-lg;
+}
+
+/* Audio */
+.wp-content .wp-block-audio {
+	@apply my-6;
+}
+
+.wp-content .wp-block-audio audio {
+	@apply w-full;
+}
+
+/* File download */
+.wp-content .wp-block-file {
+	@apply my-6 flex items-center gap-4 rounded-lg border border-border bg-card p-4;
+}
+
+.wp-content .wp-block-file a:not(.wp-block-file__button) {
+	@apply flex-1 font-medium text-card-foreground;
+}
+
+.wp-content .wp-block-file__button {
+	@apply rounded-md bg-primary px-4 py-2 text-primary-foreground no-underline transition-colors hover:bg-primary/90;
+}
+
+/* Button */
+.wp-content .wp-block-button {
+	@apply my-6;
+}
+
+.wp-content .wp-block-button__link {
+	@apply inline-block rounded-md bg-primary px-6 py-3 font-medium text-primary-foreground no-underline transition-colors hover:bg-primary/90;
+}
+
+.wp-content .wp-block-button.is-style-outline .wp-block-button__link {
+	@apply border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground;
+}
+
+/* Separator */
+.wp-content .wp-block-separator {
+	@apply my-8 border-0 border-t-2 border-border;
+}
+
+.wp-content .wp-block-separator.is-style-wide {
+	@apply border-t-4;
+}
+
+.wp-content .wp-block-separator.is-style-dots {
+	@apply border-0;
+}
+
+.wp-content .wp-block-separator.is-style-dots::before {
+	content: '···';
+	@apply block text-center text-2xl tracking-widest text-muted-foreground;
+}
+
+/* Spacer */
+.wp-content .wp-block-spacer {
+	@apply block;
+}
+
+/* Lists */
+.wp-content .wp-block-list {
+	@apply my-6;
+}
+
+.wp-content .wp-block-list ul {
+	@apply list-disc pl-6;
+}
+
+.wp-content .wp-block-list ol {
+	@apply list-decimal pl-6;
+}
+
+/* Table */
+.wp-content .wp-block-table {
+	@apply my-8 overflow-x-auto;
+}
+
+.wp-content .wp-block-table table {
+	@apply w-full border-collapse;
+}
+
+.wp-content .wp-block-table thead {
+	@apply bg-muted;
+}
+
+.wp-content .wp-block-table th {
+	@apply border border-border px-4 py-3 text-left font-semibold;
+}
+
+.wp-content .wp-block-table td {
+	@apply border border-border px-4 py-3;
+}
+
+.wp-content .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+	@apply bg-muted/50;
+}
+
+/* Cover block */
+.wp-content .wp-block-cover {
+	@apply relative my-8 flex min-h-[400px] items-center justify-center overflow-hidden rounded-lg bg-secondary;
+}
+
+/* Immagine di sfondo del cover */
+.wp-content .wp-block-cover__image-background {
+	@apply absolute inset-0 m-0 h-full w-full object-cover;
+}
+
+/* Overlay del cover (livello di colore sopra l'immagine) */
+.wp-content .wp-block-cover__background,
+.wp-content .wp-block-cover__gradient-background {
+	@apply absolute inset-0 m-0 h-full w-full bg-black;
+}
+
+/* Overlay di default con opacità 50% */
+.wp-content
+	.wp-block-cover:not(.has-background-dim-0):not(.has-background-dim-10):not(
+		.has-background-dim-20
+	):not(.has-background-dim-30):not(.has-background-dim-40):not(.has-background-dim-50):not(
+		.has-background-dim-60
+	):not(.has-background-dim-70):not(.has-background-dim-80):not(.has-background-dim-90):not(
+		.has-background-dim-100
+	)
+	.wp-block-cover__background {
+	opacity: 0.5;
+}
+
+/* Livelli di opacità per overlay */
+.wp-content .wp-block-cover.has-background-dim-0 .wp-block-cover__background {
+	opacity: 0;
+}
+
+.wp-content .wp-block-cover.has-background-dim-10 .wp-block-cover__background {
+	opacity: 0.1;
+}
+
+.wp-content .wp-block-cover.has-background-dim-20 .wp-block-cover__background {
+	opacity: 0.2;
+}
+
+.wp-content .wp-block-cover.has-background-dim-30 .wp-block-cover__background {
+	opacity: 0.3;
+}
+
+.wp-content .wp-block-cover.has-background-dim-40 .wp-block-cover__background {
+	opacity: 0.4;
+}
+
+.wp-content .wp-block-cover.has-background-dim-50 .wp-block-cover__background {
+	opacity: 0.5;
+}
+
+.wp-content .wp-block-cover.has-background-dim-60 .wp-block-cover__background {
+	opacity: 0.6;
+}
+
+.wp-content .wp-block-cover.has-background-dim-70 .wp-block-cover__background {
+	opacity: 0.7;
+}
+
+.wp-content .wp-block-cover.has-background-dim-80 .wp-block-cover__background {
+	opacity: 0.8;
+}
+
+.wp-content .wp-block-cover.has-background-dim-90 .wp-block-cover__background {
+	opacity: 0.9;
+}
+
+.wp-content .wp-block-cover.has-background-dim-100 .wp-block-cover__background {
+	opacity: 1;
+}
+
+/* Alias per has-background-dim (equivalente a 50%) */
+.wp-content .wp-block-cover.has-background-dim .wp-block-cover__background {
+	opacity: 0.5;
+}
+
+/* Colori overlay personalizzati */
+.wp-content .wp-block-cover .wp-block-cover__background.has-background {
+	@apply bg-secondary;
+}
+
+/* Contenitore interno (testo sopra overlay) */
+.wp-content .wp-block-cover__inner-container {
+	@apply relative z-10 p-8 text-center text-secondary-foreground;
+}
+
+/* Supporto per testo bianco/nero custom */
+.wp-content .wp-block-cover.has-white-color .wp-block-cover__inner-container {
+	@apply text-white;
+}
+
+.wp-content .wp-block-cover.has-black-color .wp-block-cover__inner-container {
+	@apply text-black;
+}
+
+/* Cover con gradiente */
+.wp-content .wp-block-cover__gradient-background {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* Allineamento del contenuto */
+.wp-content .wp-block-cover.is-position-top-left .wp-block-cover__inner-container {
+	@apply items-start justify-start text-left;
+}
+
+.wp-content .wp-block-cover.is-position-top-center .wp-block-cover__inner-container {
+	@apply items-start justify-center text-center;
+}
+
+.wp-content .wp-block-cover.is-position-top-right .wp-block-cover__inner-container {
+	@apply items-start justify-end text-right;
+}
+
+.wp-content .wp-block-cover.is-position-center-left .wp-block-cover__inner-container {
+	@apply items-center justify-start text-left;
+}
+
+.wp-content .wp-block-cover.is-position-center-center .wp-block-cover__inner-container {
+	@apply items-center justify-center text-center;
+}
+
+.wp-content .wp-block-cover.is-position-center-right .wp-block-cover__inner-container {
+	@apply items-center justify-end text-right;
+}
+
+.wp-content .wp-block-cover.is-position-bottom-left .wp-block-cover__inner-container {
+	@apply items-end justify-start text-left;
+}
+
+.wp-content .wp-block-cover.is-position-bottom-center .wp-block-cover__inner-container {
+	@apply items-end justify-center text-center;
+}
+
+.wp-content .wp-block-cover.is-position-bottom-right .wp-block-cover__inner-container {
+	@apply items-end justify-end text-right;
+}
+
+/* Media & Text */
+.wp-content .wp-block-media-text {
+	@apply my-8 grid items-center gap-6 md:grid-cols-2;
+}
+
+.wp-content .wp-block-media-text.has-media-on-the-right {
+	@apply md:grid-flow-dense;
+}
+
+.wp-content .wp-block-media-text.has-media-on-the-right .wp-block-media-text__media {
+	@apply md:col-start-2;
+}
+
+.wp-content .wp-block-media-text__media img,
+.wp-content .wp-block-media-text__media video {
+	@apply h-full w-full rounded-lg object-cover;
+}
+
+/* Code block */
+.wp-content .wp-block-code {
+	@apply my-6;
+}
+
+.wp-content .wp-block-code code {
+	@apply block overflow-x-auto rounded-lg bg-secondary p-4 font-mono text-sm text-secondary-foreground;
+}
+
+/* Preformatted */
+.wp-content .wp-block-preformatted {
+	@apply my-6 overflow-x-auto rounded-lg bg-muted p-4 font-mono text-sm;
+}
+
+/* Verse */
+.wp-content .wp-block-verse {
+	@apply my-6 rounded-lg bg-muted p-4 font-serif italic;
+}
+
+/* Calendar */
+.wp-content .wp-block-calendar {
+	@apply my-8;
+}
+
+.wp-content .wp-block-calendar table {
+	@apply w-full;
+}
+
+.wp-content .wp-block-calendar th,
+.wp-content .wp-block-calendar td {
+	@apply p-2 text-center;
+}
+
+/* Latest Posts */
+.wp-content .wp-block-latest-posts {
+	@apply my-8 space-y-4;
+}
+
+.wp-content .wp-block-latest-posts li {
+	@apply list-none;
+}
+
+.wp-content .wp-block-latest-posts__post-title {
+	@apply text-lg font-semibold;
+}
+
+.wp-content .wp-block-latest-posts__post-date {
+	@apply text-sm text-muted-foreground;
+}
+
+/* Colori di sfondo WordPress - usando theme colors */
+.wp-content .has-background {
+	@apply bg-card text-card-foreground;
+}
+
+/* Colori WordPress mappati al tema */
+.wp-content .has-pale-pink-background-color {
+	@apply bg-muted;
+}
+
+.wp-content .has-vivid-red-background-color,
+.wp-content .has-luminous-vivid-orange-background-color,
+.wp-content .has-luminous-vivid-amber-background-color {
+	@apply bg-primary text-primary-foreground;
+}
+
+.wp-content .has-light-green-cyan-background-color,
+.wp-content .has-vivid-green-cyan-background-color,
+.wp-content .has-pale-cyan-blue-background-color,
+.wp-content .has-vivid-cyan-blue-background-color {
+	@apply bg-secondary text-secondary-foreground;
+}
+
+.wp-content .has-vivid-purple-background-color {
+	@apply bg-accent text-accent-foreground;
+}
+
+/* Colori del testo WordPress - usando theme colors */
+.wp-content .has-pale-pink-color,
+.wp-content .has-light-green-cyan-color,
+.wp-content .has-pale-cyan-blue-color {
+	@apply text-muted-foreground;
+}
+
+.wp-content .has-vivid-red-color,
+.wp-content .has-luminous-vivid-orange-color,
+.wp-content .has-luminous-vivid-amber-color {
+	@apply text-primary;
+}
+
+.wp-content .has-vivid-green-cyan-color,
+.wp-content .has-vivid-cyan-blue-color {
+	@apply text-secondary-foreground;
+}
+
+.wp-content .has-vivid-purple-color {
+	@apply text-accent-foreground;
+}
+
+/* Responsive images */
+.wp-content img {
+	@apply h-auto max-w-full;
+}
+
+/* Caption */
+.wp-content .wp-caption {
+	@apply max-w-full;
+}
+
+.wp-content .wp-caption-text {
+	@apply mt-2 text-center text-sm text-muted-foreground italic;
+}
+
+/* Clearfix per float */
+.wp-content::after {
+	content: '';
+	@apply clear-both table;
+}
+
+/* Responsive breakpoints per alignfull su schermi piccoli */
+@media (max-width: 768px) {
+	.wp-content .alignfull,
+	.wp-content .align-full {
+		width: 100%;
+		max-width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.wp-content .alignwide,
+	.wp-content .align-wide {
+		@apply w-full;
+	}
+}
