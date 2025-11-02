@@ -15,7 +15,7 @@
 	<!-- <link rel="icon" href={favicon} /> -->
 </svelte:head>
 
-<Alert.Root class="rounded-none py-0">
+<Alert.Root class="rounded-none px-2 py-0 md:px-5">
 	<Alert.Description class="container mx-auto">
 		<Button variant="link" href="https://parrocchiadilugagnano.it" class="m-0 p-0">
 			Torna al sito della Parrocchia di Lugagnano

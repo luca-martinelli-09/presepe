@@ -5,7 +5,7 @@
 
 /* Container principale per il contenuto WordPress */
 .wp-content {
-	@apply prose prose-xl max-w-none px-5 dark:prose-invert;
+	@apply prose prose-xl max-w-none px-2 md:px-5 dark:prose-invert;
 
 	/* Typography base */
 	@apply text-foreground;
@@ -15,7 +15,7 @@
 
 	/* Headings */
 	@apply prose-headings:font-display prose-headings:text-foreground;
-	@apply prose-h1:text-8xl;
+	@apply prose-h1:text-5xl md:prose-h1:text-8xl;
 
 	/* Images */
 	@apply prose-img:rounded-lg prose-img:shadow-md;

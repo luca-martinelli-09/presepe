@@ -13,8 +13,12 @@
 
 <Dialog.Root>
 	<Dialog.Trigger>
-		<Button size="icon-lg" variant="default" class="rounded-full bg-white hover:bg-white text-black">
-			<Info class="size-5" />
+		<Button
+			size="icon-lg"
+			variant="default"
+			class="rounded-full bg-white text-black hover:bg-white size-14"
+		>
+			<Info class="size-7" />
 		</Button>
 	</Dialog.Trigger>
 	<Dialog.Content class="md:max-w-3xl">
@@ -27,6 +31,6 @@
 			src={presepe.featured_media?.source_url}
 			alt={presepe.title.rendered}
 		/>
-		<Button href="">Esplora i dettagli</Button>
+		<Button data-sveltekit-reload href={`/${presepe.slug}`}>Esplora i dettagli</Button>
 	</Dialog.Content>
 </Dialog.Root>

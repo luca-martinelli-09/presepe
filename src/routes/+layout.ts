@@ -5,7 +5,7 @@ import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {
 	const presepi = await wpClient.get<WP_Presepe[]>('/presepe', {
-		_fields: ['id', 'title', 'excerpt', 'acf'],
+		_fields: ['id', 'title', 'excerpt', 'acf', 'slug'],
 		parent: 0
 	});
 

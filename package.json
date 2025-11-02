@@ -46,6 +46,7 @@
 		"@photo-sphere-viewer/core": "^5.14.0",
 		"@photo-sphere-viewer/markers-plugin": "^5.14.0",
 		"clsx": "^2.1.1",
+		"gsap": "^3.13.0",
 		"tailwind-merge": "^3.3.1",
 		"wp-types": "^4.68.3"
 	}

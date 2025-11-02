@@ -14,9 +14,11 @@
 	let opened: boolean = $state(false);
 </script>
 
-<header class="w-full border-b px-5 py-3">
+<header class="w-full border-b px-2 py-3 md:px-5">
 	<div class="container mx-auto flex items-center justify-between">
-		<h1 class="font-display text-2xl">{title}</h1>
+		<a data-sveltekit-reload href="/">
+			<h1 class="font-display text-2xl">{title}</h1>
+		</a>
 		<Sheet.Root bind:open={opened}>
 			<Sheet.Trigger>
 				<Button variant="outline" size="icon-lg" class="size-14 rounded-full">
@@ -41,7 +43,11 @@
 					<ul class="divide-accent">
 						{#each presepi as presepe (presepe.id)}
 							<li class="relative overflow-hidden">
-								<a class="group relative block px-3 py-7 font-display text-6xl" href="">
+								<a
+									data-sveltekit-reload
+									class="group relative block px-3 py-7 font-display text-3xl lg:text-6xl"
+									href={`/${presepe.slug}`}
+								>
 									<span
 										class="relative z-10 container mx-auto block transition-colors duration-500 group-hover:text-primary-foreground"
 									>
