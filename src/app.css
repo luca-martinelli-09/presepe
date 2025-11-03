@@ -142,3 +142,18 @@
 }
 
 @import './lib/assets/wordpress.css';
+
+.psv-overlay {
+	@apply bg-background! opacity-85!;
+	background: var(--background) !important;
+}
+
+.psv-overlay-image,
+.psv-overlay-title,
+.psv-overlay-text {
+	@apply font-default! text-foreground!;
+}
+
+.psv-overlay-image {
+	@apply flex items-center justify-center;
+}

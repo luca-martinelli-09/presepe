@@ -39,7 +39,7 @@
 						end: 'top 70%',
 						toggleActions: 'play none none reverse'
 					},
-					delay: index * 0.1
+					delay: index * 0.1,
 				}
 			);
 		});
@@ -64,7 +64,12 @@
 
 <WordpressPage content={presepe.content.rendered}>
 	{#snippet title()}
-		<div class={cn('wp-block-cover alignfull', presepe.featured_media ? 'min-h-[75vh]!' : '')}>
+		<div
+			class={cn(
+				'wp-block-cover alignfull',
+				presepe.featured_media ? 'md:min-h-[75vh]!' : ''
+			)}
+		>
 			{#if presepe.featured_media}
 				<img
 					loading="lazy"
