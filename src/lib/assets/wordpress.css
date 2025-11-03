@@ -5,7 +5,7 @@
 
 /* Container principale per il contenuto WordPress */
 .wp-content {
-	@apply prose prose-xl max-w-none px-2 md:px-5 dark:prose-invert;
+	@apply prose prose-xl max-w-none px-2 dark:prose-invert;
 
 	/* Typography base */
 	@apply text-foreground;
@@ -30,15 +30,7 @@
 
 /* Larghezza di default per i blocchi WordPress (container) */
 .wp-content > * {
-	@apply container mx-auto first:!mt-5;
-}
-
-/* Eccezioni per elementi che non devono avere il container */
-.wp-content > .alignfull,
-.wp-content > .align-full,
-.wp-content > .alignwide,
-.wp-content > .align-wide {
-	@apply max-w-none;
+	@apply container mx-auto first:mt-5!;
 }
 
 /* Allineamenti WordPress */
@@ -70,7 +62,11 @@
 /* Larghezza completa (contenuto) */
 .wp-content .alignwide,
 .wp-content .align-wide {
-	@apply mx-auto my-8 w-full max-w-4xl;
+	@apply container mx-auto my-8;
+}
+
+.wp-content figure > img {
+	@apply w-full;
 }
 
 /* Larghezza completa (viewport) */

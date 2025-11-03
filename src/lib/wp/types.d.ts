@@ -9,7 +9,7 @@ interface Presepe_ACF_Fields {
 }
 
 interface Presepe_ACF_Fields_Detailed extends Presepe_ACF_Fields {
-	panoramica: WP_REST_API_Attachment;
+	panoramica: WP_REST_API_Attachment | null;
 }
 
 export interface WP_Presepe extends WP_REST_API_Post {
@@ -20,7 +20,7 @@ export interface WP_Presepe_With_Featured_Image extends WP_Presepe {
 	featured_media?: WP_REST_API_Attachment;
 }
 
-export interface WP_PresepeFull extends WP_Presepe {
+export interface WP_PresepeFull extends WP_Presepe_With_Featured_Image {
 	children: WP_Presepe_With_Featured_Image[];
 	acf: Presepe_ACF_Fields_Detailed;
 }

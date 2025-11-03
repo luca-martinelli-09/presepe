@@ -14,7 +14,7 @@
 	let opened: boolean = $state(false);
 </script>
 
-<header class="w-full border-b px-2 py-3 md:px-5">
+<header class="w-full border-b px-2 py-3">
 	<div class="container mx-auto flex items-center justify-between">
 		<a data-sveltekit-reload href="/">
 			<h1 class="font-display text-2xl">{title}</h1>
@@ -27,11 +27,11 @@
 				</Button>
 			</Sheet.Trigger>
 			<Sheet.Content side="top" showCloseButton={false} class="h-screen">
-				<div class="text-right">
+				<div class="container mx-auto px-2 text-right">
 					<Button
 						variant="outline"
 						size="icon-lg"
-						class="mx-8 mt-12 mb-8 size-14 rounded-full"
+						class="mt-16 mb-8 size-14 rounded-full"
 						onclick={() => (opened = false)}
 					>
 						<X class="size-6" />

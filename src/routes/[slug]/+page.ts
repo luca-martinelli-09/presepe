@@ -1,10 +1,12 @@
+import { createWordPressClient } from '$lib/wp';
 import { getPresepeFull } from '$lib/wp/repository';
-import { wpClient } from '$lib/wp';
 import type { WP_Presepe } from '$lib/wp/types';
-import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, fetch }) => {
+	const wpClient = createWordPressClient({ fetchFunction: fetch });
+
 	const findPresepe = await wpClient.get<WP_Presepe[]>('/presepe', {
 		slug: params.slug
 	});
@@ -13,7 +15,7 @@ export const load: PageLoad = async ({ params }) => {
 		return error(404);
 	}
 
-	const presepe = await getPresepeFull(findPresepe[0]);
+	const presepe = await getPresepeFull(findPresepe[0], fetch);
 
 	return {
 		presepe

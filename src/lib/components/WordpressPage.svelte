@@ -5,13 +5,16 @@
 	type $Props = {
 		content: string;
 		class?: string;
+		title?: Snippet;
 		children?: Snippet;
 	};
 
-	const { content, class: className = '', children }: $Props = $props();
+	const { content, class: className = '', title, children }: $Props = $props();
 </script>
 
 <article class={cn('wp-content', className)}>
+	{@render title?.()}
+
 	{@html content}
 
 	{@render children?.()}

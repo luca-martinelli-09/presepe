@@ -1,28 +1,40 @@
 import type { WP_REST_API_Attachment, WP_REST_API_Attachments } from 'wp-types';
-import { wpClient } from '.';
-import type { WP_Presepe, WP_Presepe_With_Featured_Image, WP_PresepeFull } from './types';
+import { createWordPressClient } from '.';
+import type { WP_Presepe, WP_PresepeFull } from './types';
 
-export const getPresepeFull = async (presepe: WP_Presepe): Promise<WP_PresepeFull> => {
+export const getPresepeFull = async (
+	presepe: WP_Presepe,
+	fetchFunction?: typeof fetch
+): Promise<WP_PresepeFull> => {
+	const wpClient = createWordPressClient({ fetchFunction });
+
 	const presepeId = presepe.id;
 	const panoramicaId = presepe.acf.panoramica;
 
 	const [presepeDetailed, panoramica, children] = await Promise.all([
 		wpClient.get<WP_PresepeFull>(`/presepe/${presepeId}`),
-		wpClient.get<WP_REST_API_Attachment>(`/media/${panoramicaId}`),
+		panoramicaId ? wpClient.get<WP_REST_API_Attachment>(`/media/${panoramicaId}`) : null,
 		wpClient.get<WP_Presepe[]>(`/presepe`, {
 			parent: presepeId
 		})
 	]);
 
 	presepeDetailed.acf.panoramica = panoramica;
-	presepeDetailed.children = await withFeaturedImage(children);
+	presepeDetailed.children = await withFeaturedImage(children, fetchFunction);
 
-	return presepeDetailed;
+	return (await withFeaturedImage([presepeDetailed], fetchFunction))[0];
 };
 
-export const withFeaturedImage = async (
-	presepi: WP_Presepe[]
-): Promise<WP_Presepe_With_Featured_Image[]> => {
+export async function withFeaturedImage<T extends WP_Presepe | WP_PresepeFull>(
+	presepi: T[],
+	fetchFunction?: typeof fetch
+): Promise<
+	(T & {
+		featured_media?: WP_REST_API_Attachment;
+	})[]
+> {
+	const wpClient = createWordPressClient({ fetchFunction });
+
 	const mediaList = await wpClient.get<WP_REST_API_Attachments>('/media', {
 		include: presepi
 			.map((p) => p.featured_media)
@@ -42,4 +54,4 @@ export const withFeaturedImage = async (
 			featured_media: attachment
 		};
 	});
-};
+}

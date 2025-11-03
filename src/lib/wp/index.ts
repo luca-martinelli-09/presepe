@@ -3,6 +3,7 @@ import { env } from '$env/dynamic/public';
 export interface WordPressClientConfig {
 	baseUrl: string;
 	headers?: Record<string, string>;
+	fetchFunction?: typeof fetch;
 }
 
 export interface WordPressAPIResponse<T> {
@@ -17,9 +18,12 @@ type QueryParams = Record<string, QueryParamValue>;
 export class WordPressClient {
 	private baseUrl: string;
 	private defaultHeaders: Record<string, string>;
+	private fetchFunction: typeof fetch;
 
 	constructor(config: WordPressClientConfig) {
 		this.baseUrl = config.baseUrl.replace(/\/$/, '');
+		this.fetchFunction = config.fetchFunction || fetch;
+
 		this.defaultHeaders = {
 			'Content-Type': 'application/json',
 			...config.headers
@@ -46,7 +50,7 @@ export class WordPressClient {
 
 	private async request(url: URL): Promise<Response> {
 		try {
-			const response = await fetch(url.toString(), {
+			const response = await this.fetchFunction(url.toString(), {
 				method: 'GET',
 				headers: this.defaultHeaders
 			});
@@ -87,8 +91,18 @@ export class WordPressClient {
 	}
 }
 
-export function createWordPressClient(baseUrl: string): WordPressClient {
-	return new WordPressClient({ baseUrl });
-}
+type CreateWordpressClientConfig = {
+	baseUrl?: string;
+	fetchFunction?: typeof fetch;
+};
 
-export const wpClient = createWordPressClient(env.PUBLIC_WORDPRESS_API);
+export function createWordPressClient({
+	baseUrl,
+	fetchFunction
+}: CreateWordpressClientConfig): WordPressClient {
+	return new WordPressClient({
+		baseUrl:
+			baseUrl || env.PUBLIC_WORDPRESS_API || 'https://parrocchiadilugagnano.it/wp-json/wp/v2',
+		fetchFunction
+	});
+}
