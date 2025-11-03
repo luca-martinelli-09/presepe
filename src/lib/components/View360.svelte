@@ -44,7 +44,7 @@
 			navbar: false,
 			moveInertia: 0.95,
 			mousewheel: false,
-			// touchmoveTwoFingers: true,
+			touchmoveTwoFingers: true,
 			lang: {
 				twoFingers: 'Usa due dita per navigare'
 			},
