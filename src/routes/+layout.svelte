@@ -27,7 +27,7 @@
 	</Alert.Description>
 </Alert.Root>
 
-<NavigationMenu title="Presepe di Lugagnano" presepi={data.presepi} />
+<NavigationMenu title="Presepe Artistico di Lugagnano" presepi={data.presepi} />
 
 {@render children()}
 

@@ -14,9 +14,9 @@ export type WithoutChildrenOrChild<T> = WithoutChildren<WithoutChild<T>>;
 export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?: U | null };
 
 export function createTitle(title?: string) {
-	if (!title) return 'Presepe di Lugagnano';
+	if (!title) return 'Presepe Artistico di Lugagnano';
 
-	return `${title} - Presepe di Lugagnano`;
+	return `${title} - Presepe Artistico di Lugagnano`;
 }
 
 export function createSrcset(media: WP_REST_API_Attachment): string {
