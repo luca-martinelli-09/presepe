@@ -16,7 +16,26 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?:
 export function createTitle(title?: string) {
 	if (!title) return 'Presepe Artistico di Lugagnano';
 
-	return `${title} - Presepe Artistico di Lugagnano`;
+	// Decodifica entità HTML
+	const htmlEntities: Record<string, string> = {
+		'&#8217;': "'",
+		'&quot;': '"',
+		'&amp;': '&',
+		'&lt;': '<',
+		'&gt;': '>',
+		'&apos;': "'"
+	};
+
+	let decoded = title;
+	for (const [entity, char] of Object.entries(htmlEntities)) {
+		decoded = decoded.replaceAll(entity, char);
+	}
+
+	// Decodifica entità numeriche generiche
+	decoded = decoded.replaceAll(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number.parseInt(code, 10)));
+	decoded = decoded.replaceAll(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(Number.parseInt(code, 16)));
+
+	return `${decoded} - Presepe Artistico di Lugagnano`;
 }
 
 export function createSrcset(media: WP_REST_API_Attachment): string {

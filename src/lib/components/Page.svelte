@@ -89,8 +89,8 @@
 			<div
 				class="wp-block-cover__inner-container is-layout-constrained wp-block-cover-is-layout-constrained"
 			>
-				<h1 class="wp-block-heading has-text-align-center has-large-font-size my-0! text-white!">
-					{presepe.title.rendered}
+				<h1 class="wp-block-heading has-text-align-center leading-snug has-large-font-size my-0! text-white!">
+					{@html presepe.title.rendered}
 				</h1>
 			</div>
 		</div>

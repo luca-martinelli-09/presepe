@@ -51,7 +51,7 @@
 									<span
 										class="relative z-10 container mx-auto block transition-colors duration-500 group-hover:text-primary-foreground"
 									>
-										{presepe.title.rendered}
+										{@html presepe.title.rendered}
 									</span>
 									<div
 										class="absolute inset-0 -translate-y-full bg-primary transition-transform duration-500 group-hover:translate-y-0"

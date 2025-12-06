@@ -551,6 +551,61 @@
 	@apply clear-both table;
 }
 
+/* Text Align */
+.wp-content .has-text-align-left {
+	@apply text-left;
+}
+
+.wp-content .has-text-align-center {
+	@apply text-center;
+}
+
+.wp-content .has-text-align-right {
+	@apply text-right;
+}
+
+.wp-content .has-text-align-justify {
+	@apply text-justify;
+}
+
+/* Content Justification */
+.wp-content .is-content-justification-left {
+	@apply justify-start;
+}
+
+.wp-content .is-content-justification-center {
+	@apply justify-center;
+}
+
+.wp-content .is-content-justification-right {
+	@apply justify-end;
+}
+
+.wp-content .is-content-justification-space-between {
+	@apply justify-between;
+}
+
+/* Layout */
+.wp-content .is-layout-flex {
+	@apply flex;
+}
+
+.wp-content .is-layout-grid {
+	@apply grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+
+	& > figure {
+		@apply m-0;
+	}
+}
+
+.wp-content .is-layout-constrained {
+	@apply container mx-auto;
+}
+
+.wp-content .is-layout-flow {
+	@apply block;
+}
+
 /* Responsive breakpoints per alignfull su schermi piccoli */
 @media (max-width: 768px) {
 	.wp-content .alignfull,
