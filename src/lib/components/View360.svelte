@@ -104,7 +104,7 @@
 <Dialog.Root bind:open={markerDetailOpen}>
 	<Dialog.Content class="md:max-w-3xl">
 		<Dialog.Header>
-			<Dialog.Title>{selectedMarker?.title}</Dialog.Title>
+			<Dialog.Title>{@html selectedMarker?.title}</Dialog.Title>
 			<Dialog.Description>{@html selectedMarker?.description}</Dialog.Description>
 		</Dialog.Header>
 		{#if selectedMarker?.image}
