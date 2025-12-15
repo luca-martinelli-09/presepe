@@ -39,7 +39,7 @@
 						end: 'top 70%',
 						toggleActions: 'play none none reverse'
 					},
-					delay: index * 0.1,
+					delay: index * 0.1
 				}
 			);
 		});
@@ -64,12 +64,7 @@
 
 <WordpressPage content={presepe.content.rendered}>
 	{#snippet title()}
-		<div
-			class={cn(
-				'wp-block-cover alignfull',
-				presepe.featured_media ? 'md:min-h-[75vh]!' : ''
-			)}
-		>
+		<div class={cn('wp-block-cover alignfull', presepe.featured_media ? 'md:min-h-[75vh]!' : '')}>
 			{#if presepe.featured_media}
 				<img
 					loading="lazy"
@@ -89,7 +84,9 @@
 			<div
 				class="wp-block-cover__inner-container is-layout-constrained wp-block-cover-is-layout-constrained"
 			>
-				<h1 class="wp-block-heading has-text-align-center leading-snug has-large-font-size my-0! text-white!">
+				<h1
+					class="wp-block-heading has-text-align-center has-large-font-size my-0! leading-snug text-white!"
+				>
 					{@html presepe.title.rendered}
 				</h1>
 			</div>
@@ -101,7 +98,9 @@
 		<p>
 			Ammira il presepe da una prospettiva unica ed esplora tutti i dettagli, scoprendo personaggi,
 			scene e curiosità nascoste: clicca sui marker per aprire schede informative e vivere
-			l'esperienza a 360°.
+			l'esperienza a 360°. Se sei sun dispositivo mobile (smartphone o tablet) utilizza due dita per
+			muoverti all'interno del presepe. Altrimenti, utilizza il mouse (premi e trascina) per
+			cambiare inquadratura.
 		</p>
 		<View360
 			class="alignfull mx-auto!"
